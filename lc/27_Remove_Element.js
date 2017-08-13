@@ -7,5 +7,17 @@ The order of elements can be changed. It doesn't matter what you leave beyond th
  */
 
 var removeElement = function(nums, val) {
-    
+    let i = 0, j = 0;
+    while (i < nums.length) {
+        nums[j] = nums[i];
+        if (nums[i++] != val) {
+            j++;
+        }
+        console.log(nums);
+    }
+    console.log(j);
+    return j;
 };
+
+// console.log();
+removeElement([3,2,3,3,2,3], 3);
