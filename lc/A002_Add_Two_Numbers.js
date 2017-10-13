@@ -4,7 +4,7 @@ You are given two non-empty linked lists representing two non-negative integers.
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
  */
 
-const ListNode = require('../datastructure/ListNode');
+const ListNode = require('./datastructure').ListNode;
 
 var addTwoNumbers = (l1, l2) => {
     let p1 = l1, p2 = l2;

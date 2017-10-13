@@ -20,7 +20,7 @@ const backtrack = (result, one, nums, usedSet) => {
         usedSet.add(i);
         one.push(nums[i]);
         backtrack(result, one, nums, usedSet);
-        one.pop();
+        one.pop(); 
         usedSet.delete(i);
     }
     return;
