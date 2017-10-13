@@ -20,10 +20,10 @@ const backtrack = (results, onesolution, nums, remains, start) => {
     else {
         for (let i = start; i < nums.length; i++) {
             onesolution.push(nums[i]);
-            backtrack(results, onesolution, nums, remains - nums[i], i);
+            backtrack(results, onesolution, nums, remains - nums[i], i + 1);
             onesolution.pop();
         }
     }
 }
 
-console.log(combinationSum([2,3,7], 7))
+console.log(combinationSum([10,1,2,7,6,1,5], 8))
