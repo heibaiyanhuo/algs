@@ -1,1 +1,1 @@
-Codes for alg problems based on Javascript.
+Codes for alg problems based on JavaScript.
