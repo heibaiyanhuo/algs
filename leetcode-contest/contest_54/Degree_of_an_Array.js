@@ -27,7 +27,6 @@ var findShortestSubArray = function(nums) {
             if (minmum > temp) minmum = temp;
         }
     }
-    console.log(m)
 
     return minmum;
 };
