@@ -4,18 +4,10 @@ Given two strings s and t, write a function to determine if t is an anagram of s
 
 var isAnagram = function(s, t) {
     if (s.length !== t.length) return false;
-    let map = new Map();
-    const count = (v, b) => {
-        let n = b ? 1 : -1;
-        if (!map.has(v)) map.set(v, n);
-        else map.set(v, map.get(v) + n);
-    }
-    Array.from(s).forEach((val, index) => {
-        count(val, true);
-        count(t.charAt(index), false);
+    let lf = new Array[128].fill(0);
+    Array.from(s).forEach((val, idx) => {
+        lf[val.charCodeAt(0)] += 1;
+        lf[t.charAt(idx).charCodeAt(0)] -= 1;
     })
-    for(let values of map.values()) {
-        if (values !== 0) return false;
-    }
-    return true;
+    return lf.every(val => val === 0);
 };
