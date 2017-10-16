@@ -1,13 +1,15 @@
 // 定义数组
-a = [2,4,3,6,3,0,7,4,8,9,2,5,2,3,4,4,6,2,4,0,2,3,4,5,6,7,8,8,2,2]
+a1 = [2,4,3,6,3,0,7,4,8,9,2,5,2,3,4,4,6,2,4,0,2,3,4,5,6,7,8,8,2,2]
 
-b = ((n) => {
+a2 = ((n) => {
     let result = [];
     for (let i = 0; i < n; i++) {
         result[i] = Math.floor(Math.random()*1000);
     }
     return result;
-})(80000);
+})(1000000);
+
+a3 = [5,6,7,8,9,2,3,4,5,6,7,8]
 
 // =====================================================================================
 
@@ -52,15 +54,15 @@ const shellSort = (numbers) => {
     while (h < N/3) h = 3 * h + 1;
     while (h >= 1) {
         for (let i = h; i < N; i++) {
-            for (let j = i; j >= h && numbers[j] < numbers[j - h]; j -= h) {
-                swap(numbers, j, j - h);
-            }
-            // let toBeInserted = numbers[i], j = i;
-            // while (j >= h && toBeInserted < numbers[j - h]) {
-            //     numbers[j] = numbers[j - h];
-            //     j -= h;
+            // for (let j = i; j >= h && numbers[j] < numbers[j - h]; j -= h) {
+            //     swap(numbers, j, j - h);
             // }
-            // numbers[j] = toBeInserted;
+            let toBeInserted = numbers[i], j = i;
+            while (j >= h && toBeInserted < numbers[j - h]) {
+                numbers[j] = numbers[j - h];
+                j -= h;
+            }
+            numbers[j] = toBeInserted;
         }
         h = Math.floor(h/3);
     }
@@ -84,17 +86,49 @@ const insertSort1 = (numbers) => {
 
 // 2.2 归并排序
 
+const MergeSort = class {
+
+    constructor(nums) {
+        console.time('Sort time');
+        this.aux = new Array(nums.length);
+        this._sort(nums, 0, nums.length - 1);
+        console.timeEnd('Sort time');        
+    }
+
+    _sort(a, lo, hi) {
+        if (hi <= lo) return;
+        let mid = Math.floor((lo + hi)/2);
+        this._sort(a, lo, mid);
+        this._sort(a, mid + 1, hi);
+        this._merge(a, lo, mid, hi);
+    }
+
+    _merge(a, lo, mid, hi) {
+        let i = lo, j = mid + 1;
+
+        for (let k = lo; k <= hi; k++) {
+            this.aux[k] = a[k];
+        }
+
+        for (let k = lo; k <= hi; k++) {
+            if (i > mid) a[k] = this.aux[j++];
+            else if (j > hi) a[k] = this.aux[i++];
+            else if (this.aux[j] < this.aux[i]) a[k] = this.aux[j++];
+            else a[k] = this.aux[i++]
+        }
+    }
+}
 
 
 // =====================================================================================
 
 // 测试
 
-// selectSort(a);
-// insertSort(a);
-// shellSort(a);
-// getRuntime(insertSort1, a);
-// getRuntime(insertSort1, b);
-getRuntime(shellSort, b);
-
-// console.log(a);
+// selectSort(a1);
+// insertSort(a1);
+// shellSort(a1);
+// getRuntime(insertSort1, a1);
+// getRuntime(insertSort1, a2);
+// getRuntime(shellSort, a2);
+// new MergeSort(a2);
+// console.log(a1);
