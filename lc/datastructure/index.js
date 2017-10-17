@@ -8,8 +8,14 @@ const TreeNode = function (val) {
     this.left = this.right = null;
 }
 
+const Interval = function (start, end) {
+    this.start = start;
+    this.end = end;
+}
+
 
 module.exports = {
     ListNode,
-    TreeNode
+    TreeNode,
+    Interval
 }
