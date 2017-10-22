@@ -27,7 +27,6 @@ var uniquePathsWithObstacles = function(obstacleGrid) {
         }
     }
 
-    console.log(matrix)
     return matrix[rows - 1][cols - 1];
 };
 
