@@ -89,10 +89,13 @@ const insertSort1 = (numbers) => {
 const MergeSort = class {
 
     constructor(nums) {
-        console.time('Sort time');
-        this.aux = new Array(nums.length);
-        this._sort(nums, 0, nums.length - 1);
-        console.timeEnd('Sort time');        
+        this.nums = nums;
+    }
+    
+    // 自顶向下
+    sort1() {
+        this.aux = new Array(this.nums.length);
+        this._sort(this.nums, 0, this.nums.length - 1);
     }
 
     _sort(a, lo, hi) {
@@ -101,6 +104,17 @@ const MergeSort = class {
         this._sort(a, lo, mid);
         this._sort(a, mid + 1, hi);
         this._merge(a, lo, mid, hi);
+    }
+
+    // 自底向上
+    sort2() {
+        let N = this.nums.length;
+        this.aux = new Array(N);
+        for (let sz = 1; sz < N; sz = sz + sz) {
+            for (let lo = 0; lo < N - sz; lo += sz + sz) {
+                this._merge(this.nums, lo, lo + sz - 1, Math.min(N - 1, lo + sz + sz - 1))
+            }
+        }
     }
 
     _merge(a, lo, mid, hi) {
@@ -130,5 +144,5 @@ const MergeSort = class {
 // getRuntime(insertSort1, a1);
 // getRuntime(insertSort1, a2);
 // getRuntime(shellSort, a2);
-// new MergeSort(a2);
-// console.log(a1);
+new MergeSort(a1).sort2();
+console.log(a1);
