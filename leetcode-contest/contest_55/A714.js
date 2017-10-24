@@ -27,7 +27,7 @@ var maxProfit = function(prices, fee) {
 
 const mp = (prices, fee) => {
     // s0: 当前不持有股票时最大利润, s1: 当前持有股票时的最大利润
-    let s0 = 0, s1 = -100000;
+    let s0 = 0, s1 = -100000;Number.NEGATIVE_INFINITY
     for (let p of prices) {
         // 考虑每一天后的最大利润
         // 更新s0，相当于在s1的基础上卖掉当前股票；更新s1，相当于在s0的基础上购买当前股票
