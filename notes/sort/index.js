@@ -26,6 +26,8 @@ const getRuntime = (func1, ...rest) => {
     console.timeEnd('Sort time');
 }
 
+const ListNode = require('../../lc/datastructure').ListNode
+
 // =====================================================================================
 
 // 排序算法
@@ -133,6 +135,28 @@ const MergeSort = class {
     }
 }
 
+// 2.2 练习
+
+// 2.2.17 链表排序
+const LinkedListSort = class {
+    constructor(head) {
+        this.head = head;
+    }
+
+    _merge(lo, mid, hi) {
+        let p1 = lo, p2 = mid.next;
+        let p = lo;
+        while (p != hi.next) {
+            if (p1 === mid.next) {
+                p.next = p2;
+                p2 = p2.next
+            } else if (p2 === hi.next) {
+                p.next = p1;
+                p1 = p1.next;
+            } else if ()
+        }
+    }
+}
 
 // =====================================================================================
 
