@@ -142,22 +142,47 @@ const LinkedListSort = class {
     constructor(head) {
         this.head = head;
     }
-
-    _merge(lo, mid, hi) {
-        let p1 = lo, p2 = mid.next;
-        let p = lo;
-        while (p != hi.next) {
-            if (p1 === mid.next) {
-                p.next = p2;
-                p2 = p2.next
-            } else if (p2 === hi.next) {
-                p.next = p1;
-                p1 = p1.next;
-            } else if ()
-        }
-    }
 }
 
+
+// 2.3 快速排序
+
+const quickSort = (a) => {
+    _quickSort(a, 0, a.length - 1);
+}
+
+const _quickSort = (a, lo, hi) => {
+    if (lo >= hi) return;
+    let j = partition(a, lo, hi);
+    _quickSort(a, lo, j - 1);
+    _quickSort(a, j + 1, hi);
+}
+
+const partition = (a, lo, hi) => {
+    let i = lo, j = hi + 1;
+    let v = a[lo];
+    while (true) {
+        while (a[++i] <= v) if (i === hi) break;
+        while (a[--j] >= v) if (j === lo) break;
+        if (i >= j) break;
+        swap(a, i, j);
+    }
+    swap(a, lo, j);
+    return j;
+}
+
+
+const quickSelect = (a, k) => {
+    let b = a.slice();
+    let lo = 0, hi = b.length - 1;
+    while (lo < hi) {
+        let j = partition(b, lo, hi);
+        if (j === k) return b[k];
+        else if (j < k) lo = j + 1;
+        else if (j > k) hi = j - 1;
+    }
+    return b[k];
+}
 // =====================================================================================
 
 // 测试
@@ -168,5 +193,7 @@ const LinkedListSort = class {
 // getRuntime(insertSort1, a1);
 // getRuntime(insertSort1, a2);
 // getRuntime(shellSort, a2);
-new MergeSort(a1).sort2();
-console.log(a1);
+// new MergeSort(a1).sort2();
+// quickSort(a1)
+// console.log(a1);
+console.log(quickSelect(a1, 5))
