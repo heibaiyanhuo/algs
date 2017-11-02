@@ -12,8 +12,9 @@ var search = function(nums, target) {
     let low = 0, high = nums.length;
 
     while (low < high) {
-        let mid = parseInt((low + high) / 2);
+        let mid = Math.floor((low + high) / 2);
         let num = ((target < nums[0]) === (nums[mid] < nums[0])) ? nums[mid] : (target < nums[0] ? Number.NEGATIVE_INFINITY : Number.POSITIVE_INFINITY);
+
 
         if (num > target) {
             high = mid;
@@ -27,4 +28,4 @@ var search = function(nums, target) {
     return -1;
 };
 
-console.log(search([3, 1], 3));
+console.log(search([1], 2));
