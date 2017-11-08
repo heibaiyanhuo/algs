@@ -1,6 +1,8 @@
-const ListNode = function (val) {
-    this.val = val;
-    this.next = null;
+const ListNode = class {
+    constructor (val = 0) {
+        this.val = val;
+        this.next = null;
+    }
 }
 
 const TreeNode = function (val) {
