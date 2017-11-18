@@ -21,8 +21,6 @@ var sortColors = function(nums) {
     return nums;
 };
 
-const swap = (nums, i, j) => {
-    [nums[i], nums[j]] = [nums[j], nums[i]];
-}
+
 
 console.log(sortColors([0,0,0,0]))
