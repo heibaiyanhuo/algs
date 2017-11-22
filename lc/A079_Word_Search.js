@@ -66,6 +66,55 @@ const backtrack = (r, bi, bj, board, i, word, passed) => {
 }
 
 
+const e2 = (board, word) => {
+
+    if (board === null || board.length === 0) return false;
+    let n = board.length, m = board[0].length, result = false;
+    let isVisited = new Array(n);
+    for (let i = 0; i < n; i++) {
+        isVisited[i] = new Array(m).fill(false);
+    }
+    const dfs = (i, j, counter) => {
+        if (counter === word.length) return true;
+        if (j < m - 1 && !isVisited[i][j + 1] && board[i][j + 1] === word.charAt(counter)) {
+            isVisited[i][j + 1] = true;
+            if (dfs(i, j + 1, counter + 1)) return true;
+            isVisited[i][j + 1] = false;
+        }
+        
+        if (j > 0 && !isVisited[i][j - 1] && board[i][j - 1] === word.charAt(counter)) {
+            isVisited[i][j - 1] = true;
+            if (dfs(i, j - 1, counter + 1)) return true;
+            isVisited[i][j - 1] = false;
+        }
+        
+        if (i < n - 1 && !isVisited[i + 1][j] && board[i + 1][j] === word.charAt(counter)) {
+            isVisited[i + 1][j] = true;
+            if (dfs(i + 1, j, counter + 1)) return true;
+            isVisited[i + 1][j] = false;
+        }
+        
+        if (i > 0 && !isVisited[i - 1][j] && board[i - 1][j] === word.charAt(counter)) {
+            isVisited[i - 1][j] = true;
+            if (dfs(i - 1, j, counter + 1)) return true;
+            isVisited[i - 1][j] = false;
+        }
+        return false;
+    }
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < m; j++) {
+            if(board[i][j] === word.charAt(0)) {
+                isVisited[i][j] = true;
+                if (dfs(i, j, 1)) return true;
+                isVisited[i][j] = false;
+            }
+        }
+    }
+
+    return false;
+}
+
 // console.log(exist([["a","b"],["d","c"]], "abcde"))
 // console.log(exist([['a', 'a']], 'aaa'))
-console.log(exist([["C","A","A"],["A","A","A"],["B","C","D"]], "AAB"))
+// console.log(e2([["C","A","A"],["A","A","A"],["B","C","D"]], "AAB"))
+console.log(e2([["B","A","A"]], "AAB"))
