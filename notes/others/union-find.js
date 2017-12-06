@@ -1,6 +1,6 @@
 class UF {
     constructor(N) {
-        this.count = N;
+        this._count = N;
         this.id = new Array(N);
         this.sz = new Array(N).fill(1);
         for (let i = 0; i < N; i++) {
@@ -20,11 +20,14 @@ class UF {
             this.id[pr] = qr;
             this.sz[qr]++;
         }
-        this.count--;
+        this._count--;
     }
 
     find(p) {
-        while (p !== this.id[p]) p = this.id[p];
+        while (p !== this.id[p]){
+            this.id[p] = this.id[this.id[p]]; // Path Compression
+            p = this.id[p];
+        } 
         return p;
     }
 
@@ -33,6 +36,12 @@ class UF {
     }
 
     count() {
-        return this.count;
+        return this._count;
     }
 }
+
+let uf = new UF(10);
+
+
+console.log(uf.connected(3, 9))
+console.log(uf.count())

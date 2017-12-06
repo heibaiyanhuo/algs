@@ -11,7 +11,7 @@ const binarySearch = (nums, target) => {
 }
 
 
-test(s);
+// test(s);
 // console.log(test(s))
 
-// console.log(binarySearch([1, 10, 23, 23], 25))
+console.log(binarySearch([32, 37], 33))
