@@ -11,7 +11,7 @@ const nextGreaterElement = (findNums, nums) => {
         map.set(findNums[i], i);
     }
     let aux = [];
-
+    // 每个元素 只有一次机会入栈和出栈， 时间复杂度O(n)
     for (let i = 0; i < nums.length; i++) {
         while (aux.length !== 0 && nums[i] > aux[aux.length - 1]) {
             let val = aux.pop();
