@@ -1,4 +1,4 @@
-const ListNode = class {
+class ListNode {
     constructor (val = 0) {
         this.val = val;
         this.next = null;
