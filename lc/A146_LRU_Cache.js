@@ -49,7 +49,7 @@ class LRUCache {
             if (this.count > this.capacity) {
                 let tail = popTail(this.tail);
                 this.cache.delete(tail.key);
-                count--;
+                this.count--;
             }
         }
     }
@@ -70,7 +70,7 @@ const addNode = (head, node) => {
     node.post = tmp;
 }
 
-const moveToHead = (head, note) => {
+const moveToHead = (head, node) => {
     removeNode(node);
     addNode(head, node);
 }
