@@ -5,10 +5,14 @@ class ListNode {
     }
 }
 
-const TreeNode = function (val) {
-    this.val = val;
-    this.left = this.right = null;
+class TreeNode {
+    constructor(val = 0) {
+        this.val = val;
+        this.left = this.right = null;
+    }
 }
+
+
 
 const Interval = function (start, end) {
     this.start = start;
