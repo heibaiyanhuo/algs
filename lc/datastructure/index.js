@@ -12,6 +12,12 @@ class TreeNode {
     }
 }
 
+class UndirectedGraphNode {
+    constructor(label = 0) {
+        this.label = label;
+        this.neighbors = [];
+    }
+}
 
 
 const Interval = function (start, end) {
@@ -23,5 +29,6 @@ const Interval = function (start, end) {
 module.exports = {
     ListNode,
     TreeNode,
-    Interval
+    Interval,
+    UndirectedGraphNode
 }
