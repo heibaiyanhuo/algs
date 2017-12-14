@@ -5,19 +5,17 @@ For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums sh
  */
 
 var moveZeroes = function(nums) {
-    let count = 0, pointer = 0, length = nums.length;
-    for (let i = 0; i < length; i++) {
-        if (nums[i] === 0) {
-            count++;
-        } else {
-            nums[pointer++] = nums[i];
+    let pointer = 0, length = nums.length;
+    for (let num of nums) {
+        if (num !== 0) {
+            num[pointer++] = num[i];
         }
     }
 
-    while (count > 0) {
-        nums[length - count] = 0;
-        count--;
+    while (pointer < num.length) {
+        num[pointer++] = 0;
     }
+
 
     return nums;
 };
