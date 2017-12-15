@@ -11,6 +11,10 @@ const reverseList = (head) => {
     let p = head;
     while (p) {
         [rev, rev.next, p] = [p, rev, p.next];
+        // let next = p.next;
+        // p.next = rev;
+        // rev = p;
+        // p = next;
     }
     return rev;
 }

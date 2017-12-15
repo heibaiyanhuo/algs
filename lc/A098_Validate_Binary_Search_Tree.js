@@ -16,14 +16,18 @@ const isValidBST2 = (root) => {
     // iterative
     const stack = [];
     let p = root;
-
+    let prev = null;
     while (p || stack.length > 0) {
         while (p) {
             stack.push(p);
             p = p.left;
         }
         p = stack.pop();
+        if (prev && p.val <= prev.val) return false;
+        prev = p;
+        p = p.right;
     }
+    return true;
 }
 
 const n0 = new TreeNode(3);

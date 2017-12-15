@@ -30,4 +30,28 @@ var search = function(nums, target) {
     return nums[low] === target ? low : - 1;
 };
 
+const s2 = (nums, target) => {
+    let lo = 0, hi = nums.length - 1;
+    while (lo <= hi) {
+        let mid = Math.floor((lo + hi)/2);
+        if (nums[mid] === target) return mid;
+        if (nums[mid] >= nums[lo]) {
+            if (target < nums[mid] && target >= nums[lo]) {
+                hi = mid - 1;
+            } else {
+                lo = mid + 1;
+            }
+        }
+
+        if (nums[mid] <= nums[hi]) {
+            if (target > nums[mid] && target <= nums[hi]) {
+                lo = mid + 1;
+            } else {
+                hi = mid - 1;
+            }
+        }
+    }
+    return -1;
+}
+
 console.log(search([1], 2));
