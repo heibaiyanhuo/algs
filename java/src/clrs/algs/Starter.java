@@ -1,4 +1,4 @@
-package clrs;
+package clrs.algs;
 
 import java.util.Arrays;
 
@@ -9,7 +9,7 @@ public class Starter {
     public static void main(String[] args) {
         Sorting sorting = new Sorting();
         System.out.println(Arrays.toString(arr));
-        sorting.insertionSort(arr);
+        sorting.quickSort(arr);
         System.out.println(Arrays.toString(arr));
     }
 }
