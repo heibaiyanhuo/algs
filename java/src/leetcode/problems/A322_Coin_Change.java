@@ -58,7 +58,8 @@ public class A322_Coin_Change {
 
     public static void main(String[] args) {
         A322_Coin_Change solution = new A322_Coin_Change();
-        System.out.println(solution.coinChange2(new int[]{2}, 1));
+        int[][] a = new int[3][4];
+        System.out.println(Arrays.toString(a[0]));
     }
 }
 
