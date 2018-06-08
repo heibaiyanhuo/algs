@@ -10,7 +10,7 @@ public class Serializer {
      * @return an string like "[1, 2, null]"
      */
     public static String serialize(TreeNode root) {
-
+        StringBuilder sequenceBuilder = new StringBuilder("[");
         return null;
     }
 
