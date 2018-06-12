@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class A94_Binary_Tree_Inorder_Traversal {
+public class A094_Binary_Tree_Inorder_Traversal {
 
     /**
      * Do it iteratively.
@@ -45,7 +45,7 @@ public class A94_Binary_Tree_Inorder_Traversal {
 
     public static void main(String[] args) {
         Serializer s = new Serializer();
-        A94_Binary_Tree_Inorder_Traversal solution = new A94_Binary_Tree_Inorder_Traversal();
+        A094_Binary_Tree_Inorder_Traversal solution = new A094_Binary_Tree_Inorder_Traversal();
         List result = solution.inorderTraversal(s.deserialize("[1, null, 2, 3]"));
         System.out.println(result.toString());
     }

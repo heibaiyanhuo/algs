@@ -24,9 +24,9 @@ public class A008_String_to_Integer {
         }
         int originalLength = str.length();
 
-        long result = 0;
+        int result = 0;
         int p = 0;
-        boolean minus = false;
+        int sign = 1;
         while (p < originalLength && str.charAt(p) == ' ') {
             p++;
         }
@@ -35,7 +35,7 @@ public class A008_String_to_Integer {
         }
 
         if (str.charAt(p) == '-') {
-            minus = true;
+            sign = -1;
             p++;
         } else if (str.charAt(p) == '+') {
             p++;
@@ -53,23 +53,17 @@ public class A008_String_to_Integer {
         }
 
         while (p < originalLength && str.charAt(p) >= '0' && str.charAt(p) <= '9') {
-            result *= 10;
-            result += (str.charAt(p) - '0');
-            if (minus) {
-                if (-result < Integer.MIN_VALUE) {
-                    return Integer.MIN_VALUE;
-                }
-            } else {
-                if (result > Integer.MAX_VALUE) {
-                    return Integer.MAX_VALUE;
-                }
+            int rest = str.charAt(p) - '0';
+
+            if (result > 214748364 || (result == 214748364 && rest > 7)) {
+                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
             }
+            result = result * 10 + rest;
             p++;
         }
-        if (minus) {
-            return (int) -result;
-        }
-        return (int) result;
+
+        return sign * result;
+
     }
 
     public static void main(String[] args) {
