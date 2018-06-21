@@ -4,7 +4,7 @@ public class A033_Search_in_Rotated_Sorted_Array {
 
     public int search(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
-            return 0;
+            return -1;
         }
         int lo = 0;
         int hi = nums.length - 1;
@@ -14,24 +14,16 @@ public class A033_Search_in_Rotated_Sorted_Array {
             if (nums[mid] == target) {
                 return mid;
             } else if (nums[mid] > target) {
-                if (nums[mid] > nums[lo]) {
-                    if (target >= nums[lo]) {
-                        hi = mid - 1;
-                    } else {
-                        lo = mid + 1;
-                    }
-                } else {
+                if (nums[mid] <= nums[lo] || target >= nums[lo]) {
                     hi = mid - 1;
+                } else {
+                    lo = mid + 1;
                 }
             } else {
-                if (nums[mid] > nums[lo]) {
+                if (nums[mid] > nums[lo] || target < nums[lo]) {
                     lo = mid + 1;
                 } else {
-                    if (target >= nums[lo]) {
-                        hi = mid - 1;
-                    } else {
-                        lo = mid + 1;
-                    }
+                    hi = mid - 1;
                 }
             }
         }
@@ -40,7 +32,7 @@ public class A033_Search_in_Rotated_Sorted_Array {
             return lo;
         }
 
-        if (nums[lo + 1] == target) {
+        if (lo < nums.length - 1 && nums[lo + 1] == target) {
             return lo + 1;
         }
 
