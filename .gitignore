@@ -5,3 +5,4 @@ test.js
 .idea
 *.iml
 out/
+java/src/leetcode/utils/Test\.java
