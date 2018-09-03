@@ -22,7 +22,7 @@ public class A143_Reorder_List {
         }
         p = head;
         ListNode q = rev;
-        while (p != null) {
+        while (p != null && q != null) {
             ListNode tmp1 = p.next;
             p.next = q;
             ListNode tmp2 = q.next;
