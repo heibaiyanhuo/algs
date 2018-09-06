@@ -1,10 +1,9 @@
 package leetcode.problems;
 
 import leetcode.datastructures.Interval;
+import leetcode.datastructures.SweepingPoint;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class A056_Merge_Intervals {
 
@@ -33,5 +32,50 @@ public class A056_Merge_Intervals {
 
         }
         return ret;
+    }
+
+    private List<Interval> merge2(List<Interval> intervals) {
+        if (intervals.isEmpty()) {
+            return intervals;
+        }
+        intervals.sort((x, y) -> x.start - y.start);
+        List<Interval> result = new ArrayList<>();
+        int start = intervals.get(0).start;
+        int end = intervals.get(0).end;
+        for (Interval i: intervals) {
+            if (i.start <= end) {
+                end = Math.max(end, i.end);
+            } else {
+                result.add(new Interval(start, end));
+                start = i.start;
+                end = i.end;
+            }
+        }
+        return result;
+    }
+
+    private List<Interval> merge3(List<Interval> intervals) {
+        if (intervals == null || intervals.isEmpty()) {
+            return intervals;
+        }
+        List<SweepingPoint> points = new ArrayList<>();
+        for (Interval interval: intervals) {
+            points.add(new SweepingPoint(interval.start, 1));
+            points.add(new SweepingPoint(interval.end, -1));
+        }
+        points.sort(Comparator.comparing((SweepingPoint p) -> p.val).thenComparing(p -> -p.label));
+        List<Interval> res = new ArrayList<>();
+        int count = 0;
+        int start = 0;
+        for (SweepingPoint p: points) {
+            if (count == 0) {
+                start = p.val;
+            }
+            count += p.label;
+            if (count == 0) {
+                res.add(new Interval(start, p.val));
+            }
+        }
+        return res;
     }
 }
