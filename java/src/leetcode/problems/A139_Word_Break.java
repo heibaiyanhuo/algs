@@ -6,10 +6,7 @@ import java.util.Set;
 
 public class  A139_Word_Break {
     public boolean wordBreak(String s, List<String> wordDict) {
-        Set<String> words = new HashSet<>();
-        for (String word: wordDict) {
-            words.add(word);
-        }
+        Set<String> words = new HashSet<>(wordDict);
         int l = s.length();
         boolean[] dp = new boolean[l + 1];
         dp[0] = true;
