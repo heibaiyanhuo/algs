@@ -23,4 +23,23 @@ public class A325_Maximum_Size_Subarray_Sum_Equals_k {
         }
         return l;
     }
+
+    private int maxSubArrayLen2(int[] nums, int k) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int l = 0;
+        int sum = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, 0);
+        for (int i = 1; i <= nums.length; i++) {
+            sum += nums[i - 1];
+            if (map.containsKey(sum - k)) {
+                l = Math.max(l, i - map.get(sum - k));
+            }
+            if (!map.containsKey(sum)) {
+                map.put(sum, i);
+            }
+        }
+        return l;    }
 }
