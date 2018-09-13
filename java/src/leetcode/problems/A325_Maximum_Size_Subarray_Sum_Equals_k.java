@@ -41,5 +41,6 @@ public class A325_Maximum_Size_Subarray_Sum_Equals_k {
                 map.put(sum, i);
             }
         }
-        return l;    }
+        return l;
+    }
 }
