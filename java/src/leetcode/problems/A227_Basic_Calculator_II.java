@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class A227_Basic_Calculator_II {
 
-    public int calculate(String s) {
+    private int calculate(String s) {
         Stack<Integer> numbers = new Stack<>();
         int res = 0;
         int num = 0;
