@@ -46,11 +46,9 @@ public class A155_Min_Stack {
 
     public void push(int x) {
         if (head == null) {
-            Node node = new Node(x, x, head);
-            head = node;
+            head = new Node(x, x, head);
         } else {
-            Node node = new Node(x, Math.min(x, head.currMin), head);
-            head = node;
+            head = new Node(x, Math.min(x, head.currMin), head);
         }
     }
 
@@ -68,7 +66,7 @@ public class A155_Min_Stack {
         return head.currMin;
     }
 
-    class Node {
+    static class Node {
         int val;
         int currMin;
         Node next;
