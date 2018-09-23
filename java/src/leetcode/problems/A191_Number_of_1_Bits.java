@@ -4,7 +4,7 @@ public class A191_Number_of_1_Bits {
 
     public int hammingWeight(int n) {
         int count = 0;
-        for (; n > 0; count++) {
+        for (; n != 0; count++) {
             n &= (n - 1);
         }
         return count;

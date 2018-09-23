@@ -45,7 +45,7 @@ public class A347_Top_K_Frequent_Elements {
             }
         }
         List<Integer> res = new ArrayList<>();
-        for (int i = nums.length; i >= 0; i--) {
+        for (int i = nums.length;  i >= 0 && res.size() < k; i--) {
             if (map.containsKey(i)) {
                 res.addAll(map.get(i));
             }

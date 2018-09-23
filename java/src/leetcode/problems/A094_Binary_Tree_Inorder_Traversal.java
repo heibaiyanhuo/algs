@@ -3,9 +3,7 @@ package leetcode.problems;
 import leetcode.datastructures.TreeNode;
 import leetcode.utils.Serializer;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class A094_Binary_Tree_Inorder_Traversal {
 
@@ -14,33 +12,19 @@ public class A094_Binary_Tree_Inorder_Traversal {
      * @param root
      */
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> list = new ArrayList<>();
-        if (root == null) {
-            return list;
-        }
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode node = root;
-        while (node != null) {
-            stack.push(node);
-            node = node.left;
-        }
-        while (!stack.isEmpty()) {
-            TreeNode curr = stack.pop();
-            list.add(curr.val);
-            if (curr.right != null) {
-                curr = curr.right;
-                while (curr != null) {
-                    stack.push(curr);
-                    curr = curr.left;
-                }
+        List<Integer> res = new ArrayList<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode curr = root;
+        while (curr != null || !stack.isEmpty()) {
+            while (curr != null) {
+                stack.push(curr);
+                curr = curr.left;
             }
+            curr = stack.pop();
+            res.add(curr.val);
+            curr = curr.right;
         }
-        return list;
-    }
-
-    public List<Integer> preorderTraversal(TreeNode root) {
-
-        return null;
+        return res;
     }
 
     public static void main(String[] args) {
