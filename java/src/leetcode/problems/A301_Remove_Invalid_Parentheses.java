@@ -63,7 +63,7 @@ public class A301_Remove_Invalid_Parentheses {
 
     public static void main(String[] args) {
         A301_Remove_Invalid_Parentheses solution = new A301_Remove_Invalid_Parentheses();
-        String a = "()(abc))(aa)";
+        String a = "(()(abc)(aa)";
         System.out.println(solution.removeInvalidPar(a));
     }
 }
