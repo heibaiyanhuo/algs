@@ -51,6 +51,7 @@ public class A056_Merge_Intervals {
                 end = i.end;
             }
         }
+        result.add(new Interval(start, end));
         return result;
     }
 
@@ -64,6 +65,12 @@ public class A056_Merge_Intervals {
             points.add(new SweepingPoint(interval.end, -1));
         }
         points.sort(Comparator.comparing((SweepingPoint p) -> p.val).thenComparing(p -> -p.label));
+//        points.sort((p1, p2) -> {
+//            if (p1.val == p2.val) {
+//                return p2.label - p1.label;
+//            }
+//            return p1.val - p2.val;
+//        });
         List<Interval> res = new ArrayList<>();
         int count = 0;
         int start = 0;
