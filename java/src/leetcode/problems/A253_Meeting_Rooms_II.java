@@ -17,7 +17,7 @@ public class A253_Meeting_Rooms_II {
             points[2 * i] = new SweepingPoint(intervals[i].start, 1);
             points[2 * i + 1] = new SweepingPoint(intervals[i].end, -1);
         }
-        Arrays.sort(points, Comparator.comparing((SweepingPoint p) -> p.val).thenComparing(p -> p.label));
+        Arrays.sort(points, Comparator.comparing((SweepingPoint p) -> p.val).thenComparing(p -> -p.label));
         int max = 0;
         int count = 0;
         for (SweepingPoint p: points) {
